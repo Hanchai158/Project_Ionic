@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>historyasset</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div text-center>อาคาร : {{history_build}}</div>
+  <div text-center>ห้อง : {{history_room}}</div>
+  <ion-card *ngFor="let history of arr_historys;let i = index" >
+    <ion-card-header>
+        {{i+1}}. {{history.eqs_name}}
+    </ion-card-header>
+    <ion-card-content>
+      <div>รหัสครุภัณฑ์ : {{history.eqs_code_old}} </div>
+      <div>ประเภท : {{history.fmst_abbr }}</div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

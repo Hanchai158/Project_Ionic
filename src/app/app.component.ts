@@ -2,9 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+/* import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
+import { AndroidPermissions } from '@ionic-native/android-permissions'; */
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { AssetcheckPage } from '../pages/assetcheck/assetcheck';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -16,15 +19,20 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen/* , private androidPermissions: AndroidPermissions */) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'ตรวจสอบครุภัณฑ์', component: AssetcheckPage }
     ];
-
+   
+    /* this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+      result => console.log('Has permission?',result.hasPermission),
+      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+    );
+    
+    this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]); */
   }
 
   initializeApp() {
@@ -41,4 +49,6 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  
 }

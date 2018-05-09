@@ -1,0 +1,41 @@
+
+<ion-header>
+  
+  <ion-navbar>
+    <ion-title>listasset</ion-title>
+    <ion-buttons end>
+      <button (click)="scanCode()">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar> 
+ 
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center>อาคาร : {{history_build}}</div>
+  <div text-center>ห้อง : {{history_room}}</div>
+  <form (submit)="addCode(code.value)">
+    <ion-item>
+      <ion-input type="text" placeholder="รหัสครุภัณฑ์" value="" #code></ion-input>
+    </ion-item>
+      <button ion-button full icon-left color="secondary" type="submit"><ion-icon name="barcode"></ion-icon>เพิ่มรหัสครุภัณฑ์</button> 
+  </form>
+  <!-- <button ion-button full icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Scan Code</button> -->
+
+  <ion-list> <!--  ส่วนการแสดง skill -->
+    <button ion-item *ngFor="let code of codeData,let i = index">
+      {{(i+1)}}. {{code}}
+      <div class="item-note" item-end>
+      <ion-icon name="md-trash" item-start (click)="removeCode(code)"></ion-icon>
+      </div>
+    </button>
+  </ion-list>
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full icon-left (click)="presentAlert(code)" >ยืนยันการตรวจสอบ</button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ตรวจสอบครุภัณฑ์</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+  <br>
+  <ion-img style="align-items: center" width="180" height="180" src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/31175748_1896934663714841_7003708564342571008_n.png?_nc_cat=0&oh=50e0feace12cf742d2481578c23a4e51&oe=5B5C9FA2"></ion-img>
+  <br><br><br>
+  <ion-item>
+    <ion-label>อาคาร : </ion-label>
+    <ion-select [(ngModel)]="building" (ionChange)="changeBuilding(building)" >
+      <ion-option [value]="building" *ngFor="let building of arr_buildings" >{{building.bd_name_abbr}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>ห้อง : </ion-label>
+    <ion-select [(ngModel)]="room" (ionChange)="changeRoom(room)">
+      <ion-option [value]="room" *ngFor="let room of arr_rooms" >{{room.rm_name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-grid>
+  <ion-row>
+    <ion-col width-50 style="text-align: right">
+      <button ion-button [disabled]="!isEnabled" (click)="checkAsset()" >ตรวจสอบ</button>
+    </ion-col>
+    <ion-col width-50 style="text-align: left">
+      <button ion-button color="dark" [disabled]="!isEnabled" (click)="historyAsset()">ประวัติ</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+
+
+
